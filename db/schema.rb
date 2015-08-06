@@ -15,12 +15,12 @@ ActiveRecord::Schema.define(version: 20150709204347) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "body"
-    t.integer  "Question_id"
+    t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "answers", ["Question_id"], name: "index_answers_on_Question_id"
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 20150709204347) do
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
-    t.boolean  "resolved"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "resolved",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
