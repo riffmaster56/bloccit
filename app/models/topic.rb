@@ -4,4 +4,6 @@ class Topic < ActiveRecord::Base
   scope :visible_to, -> (user) { user ? all : where(public: true) }
 
   validates :name, length: { minimum: 5 }, presence: true
+
+  self.per_page = 50
 end
