@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   resources :topics do
     resources :posts, except: [:index] do
       resources :summaries, only: [:new, :create, :show]
-      resources :comments, only: [:new, :create, :show, :destroy]
     end
+  end
+  
+  resources :posts, only: [] do
+    resources :comments, only: [:new, :create, :show, :destroy]
   end
 
   get 'about' => 'welcome#about'
